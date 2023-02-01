@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>随机点名</title>
+  </head>
+  <style>
+  *{
+    margin:0;
+    padding:0;
+    }
+  body{
+    background-color:blue;
+    
+    }
+  .stu{
+    float:left;
+    width:100px;
+    background-color:red;
+    text-align:center;
+    color:white;
+    padding:5px 0;
+    margin:10px;
+    }
+  .ck{
+    background-color:black;
+    color:yellow;
+    }
+  .start{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    }
+  </style>
+  <body>	
+  <button class="start" onclick="start()">开始</button>
+  <div class="stu">名字</div>
+  <script>
+  const data = ["名字","名字","名字","名字以此类推"];
+  data.forEach(v=>{
+    let stu = document.createElement("div");
+    stu.className = "stu";
+    stu.innerText = v
+    document.body.appendChild(stu)
+    })
+  function start(){
+      let stu = document.querySelectorAll(".stu")
+  let timer = setInterval(()=>{
+    stu.forEach(v=>{
+v.classList.remove("ck");
+
+})
+    stu[Math.floor(Math.random()*stu.length)].classList.add("ck")
+    
+    },200)
+  setTimeout(()=>{
+    clearInterval(timer)
+    
+    },2000);
+  }
+  </script>
+  </body>
+</html>
